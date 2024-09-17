@@ -28,7 +28,7 @@ app.post('/check-transaction', (req, res) => {
   const usedTransactionIds = loadTransactionIds();
 
   if (usedTransactionIds.includes(transactionId)) {
-    return res.status(400).json({ message: 'Transaction ID already used' });
+    return res.status(400).json({ message: 'Transaction ID already exit' });
   }
 
   // Save new transaction ID
