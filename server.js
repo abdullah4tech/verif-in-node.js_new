@@ -1,9 +1,12 @@
+const cors = require('cors')
+
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 
 const filePath = path.join(__dirname, 'transactionIds.json');
 
@@ -19,12 +22,13 @@ const loadTransactionIds = () => {
 
 // Save transaction IDs
 const saveTransactionIds = (ids) => {
-  fs.writeFileSync(filePath, JSON.stringify(ids, null, 2), 'utf-8');
+  fs.writeFileSync(filePath, JSON.stringify(ids, null ,2), 'utf-8');
 };
 
 // Check if a transaction ID is already used
 app.post('/check-transaction', (req, res) => {
   const { transactionId } = req.body;
+  console.log(transactionId)
   const usedTransactionIds = loadTransactionIds();
 
   if (usedTransactionIds.includes(transactionId)) {
