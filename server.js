@@ -6,7 +6,11 @@ const path = require('path');
 
 const app = express();
 app.use(express.json());
-app.use(cors())
+app.use(cors(
+  {
+    origin: 'https://payment-verification-form.vercel.app/'
+  }
+))
 
 const filePath = path.join(__dirname, 'transactionIds.json');
 
@@ -32,7 +36,7 @@ app.post('/check-transaction', (req, res) => {
   const usedTransactionIds = loadTransactionIds();
 
   if (usedTransactionIds.includes(transactionId)) {
-    return res.status(400).json({ message: 'Transaction ID already exit' });
+    return res.status(400).json({ message: 'This Transaction ID has already been used.' });
   }
 
   // Save new transaction ID
