@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors(
   {
-    origin: ['https://payment-verification-form.vercel.app/', 'https://formspree.io/f/mldrybrn'], 
+    origin: ['https://payment-verification-form.vercel.app/', 'https://formspree.io/f/mldrybrn', 'http://localhost:3000/'], 
     methods: ['GET', 'POST'],
     credentials: true, 
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -50,7 +50,7 @@ app.post('/check-transaction', (req, res) => {
   res.json({ message: 'Transaction ID is valid and saved' });
 });
 
-const port = process.env.PORT || 5000; // Use environment variable if available
+const port = process.env.PORT || 3000; // Use environment variable if available
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
