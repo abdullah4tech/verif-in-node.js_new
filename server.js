@@ -11,9 +11,10 @@ app.use(cors(
     origin: ['https://payment-verification-form.vercel.app/', 'https://formspree.io/f/mldrybrn'], 
     methods: ['GET', 'POST'],
     credentials: true, 
-    allowedHeaders: 'Content-Type,Authorization',
+    allowedHeaders: ['Content-Type', 'Authorization'],
   }
 ))
+app.options('*', cors());
 
 const filePath = path.join(__dirname, 'transactionIds.json');
 
