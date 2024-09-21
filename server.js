@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors(
   {
-    origin: ['https://verif-in-nodejs-production.up.railway.app/check-transaction', 'https://formspree.io/f/mldrybrn'], 
+    origin: ['https://payment-verification-form.vercel.app/', 'https://formspree.io/f/mldrybrn'], 
     methods: ['GET', 'POST'],
     credentials: true, 
     allowedHeaders: 'Content-Type,Authorization',
