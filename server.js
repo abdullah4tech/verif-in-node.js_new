@@ -8,7 +8,8 @@ const app = express();
 app.use(express.json());
 app.use(cors(
   {
-    origin: 'https://payment-verification-form.vercel.app/'
+    origin: 'https://payment-verification-form.vercel.app/',
+    credential: true,
   }
 ))
 
